@@ -1,0 +1,32 @@
+.proyectosContainer {
+  padding: 40px;
+
+  .mat-elevation-z8 {
+    .mat-mdc-table {
+      background-color: white;
+      .mat-sort-header {
+        justify-items: center;
+      }
+      .mat-mdc-header-cell {
+        text-align: center;
+      }
+      .mat-mdc-cell {
+        text-align: center;
+        cursor: pointer;
+      }
+      tr {
+        color: black;
+      }
+    }
+  }
+  .ripple-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden; /* Ensures ripple stays within bounds */
+  }
+}

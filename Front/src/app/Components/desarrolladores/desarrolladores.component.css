@@ -1,0 +1,27 @@
+.desarrolladoresContainer {
+  padding: 40px;
+}
+.desarrolladoresContainer .desarrolladoresHeader {
+  display: flex;
+  justify-content: space-between;
+}
+.desarrolladoresContainer .desarrolladoresHeader .newDevButton {
+  margin: 20px;
+  background-color: rgb(81, 121, 206);
+  color: white;
+}
+.desarrolladoresContainer .desarrolladoresContent .mat-elevation-z8 .mat-mdc-table {
+  background-color: white;
+}
+.desarrolladoresContainer .desarrolladoresContent .mat-elevation-z8 .mat-mdc-table .mat-mdc-header-cell {
+  text-align: center;
+}
+.desarrolladoresContainer .desarrolladoresContent .mat-elevation-z8 .mat-mdc-table .mat-mdc-cell {
+  text-align: center;
+}
+.desarrolladoresContainer .desarrolladoresContent .mat-elevation-z8 .mat-mdc-table .mat-mdc-cell .actionIcon {
+  cursor: pointer;
+}
+.desarrolladoresContainer .desarrolladoresContent .mat-elevation-z8 .mat-mdc-table tr {
+  color: black;
+}/*# sourceMappingURL=desarrolladores.component.css.map */

@@ -1,0 +1,175 @@
+<h2 mat-dialog-title>{{ data.nombre }}</h2>
+<mat-dialog-content class="mat-proyectos">
+  <div class="basicInfo">
+    <div class="info">
+      <strong>ID:</strong>
+      <p>{{ data.id }}</p>
+    </div>
+
+    <div class="info">
+      <strong>Descripcion:</strong>
+      <p>{{ data.descripcion }}</p>
+    </div>
+
+    <div class="info">
+      <strong>Fecha de inicio:</strong>
+      <p>{{ data.fechaInicio | date : "dd/MM/yyyy" }}</p>
+    </div>
+
+    <div class="info">
+      <strong>Fecha de fin:</strong>
+      <p>{{ data.fechaFin | date : "dd/MM/yyyy" }}</p>
+    </div>
+
+    <div class="info">
+      <strong>Responsable:</strong>
+      <p>{{ data.responsable?.nombre }}</p>
+    </div>
+  </div>
+
+  <div class="lists">
+    <div class="desarrolladores">
+      <p><strong>Desarrolladores:</strong></p>
+      <ul>
+        @for (desarrollador of data.desarrolladores; track desarrollador.id){
+        <li>
+          <mat-icon
+            fontIcon="delete"
+            class="icon removeDev"
+            (click)="onOpenModal(desarrollador.id, desarrollador.nombre)"
+          ></mat-icon>
+          <mat-icon fontIcon="person" class="icon"> </mat-icon
+          >{{ desarrollador.nombre }}
+        </li>
+        }
+      </ul>
+    </div>
+
+    <div class="tareas">
+      <p><strong>Tareas:</strong></p>
+      <mat-tree
+        #tree
+        [dataSource]="dataSource"
+        [childrenAccessor]="childrenAccessor"
+        class="treeTareas"
+      >
+        <!-- Parent Node -->
+        <mat-tree-node
+          *matTreeNodeDef="let node; when: hasChild"
+          matTreeNodePadding
+        >
+          <button
+            mat-icon-button
+            matTreeNodeToggle
+            [attr.aria-label]="'Toggle ' + node.name"
+          >
+            <mat-icon>
+              {{ tree.isExpanded(node) ? "expand_more" : "chevron_right" }}
+            </mat-icon>
+          </button>
+          {{ node.name }}
+        </mat-tree-node>
+
+        <!-- Leaf Node -->
+        <mat-tree-node *matTreeNodeDef="let node" class="childTareas">
+          <mat-icon class="mat-icon-rtl-mirror">remove</mat-icon>
+          {{ node.name }}
+        </mat-tree-node>
+      </mat-tree>
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-divider></mat-divider>
+<div class="formContainer">
+  <div class="addDesarrolador">
+    <h2>Agregar Desarrollador</h2>
+    <form [formGroup]="agregarDevForm">
+      <mat-form-field class="form-field">
+        <mat-label class="matLabel">Desarrollador</mat-label>
+        <mat-select formControlName="desarrolladorId" class="matSelect">
+          @if (!(uniqueDesarrolladores$ | async)){
+          <mat-option disabled> Loading... </mat-option>
+          } @else { @for (des of (uniqueDesarrolladores$ | async); track des.id)
+          {
+          <mat-option class="matDropdownOption" [value]="des.id">{{
+            des.nombre
+          }}</mat-option>
+          } }
+        </mat-select>
+      </mat-form-field>
+    </form>
+  </div>
+  <!-- <div class="addTarea">
+    <h2>Agregar Tarea Nueva</h2>
+    <form [formGroup]="agregarTareaForm">
+      <div class="formField">
+        <input type="text" formControlName="titulo" placeholder="Titulo*" />
+      </div>
+      <div class="formField">
+        <input
+          type="text"
+          formControlName="descripcion"
+          placeholder="Descripcion*"
+        />
+      </div>
+      <mat-form-field class="form-field">
+        <mat-label class="matLabel">Estado</mat-label>
+        <mat-select formControlName="estado" class="matSelect">
+          @if (!(uniqueDesarrolladores$ | async)){
+          <mat-option disabled> Loading... </mat-option>
+          } @else { @for (des of (uniqueDesarrolladores$ | async); track des.id)
+          {
+          <mat-option class="matDropdownOption" [value]="des.id">{{
+            des.nombre
+          }}</mat-option>
+          } }
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="form-field">
+        <mat-label class="matLabel">Asignar</mat-label>
+        <mat-select formControlName="asignado" class="matSelect">
+          @if (!(uniqueDesarrolladores$ | async)){
+          <mat-option disabled> Loading... </mat-option>
+          } @else { @for (des of (uniqueDesarrolladores$ | async); track des.id)
+          {
+          <mat-option class="matDropdownOption" [value]="des.id">{{
+            des.nombre
+          }}</mat-option>
+          } }
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="customField" appearance="outline">
+        <input
+          matInput
+          [matDatepicker]="picker"
+          formControlName="fechaLimite"
+          placeholder="Fecha limite*"
+        />
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </form>
+  </div> -->
+</div>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close (click)="onCancel()">Cancel</button>
+  <button
+    mat-button
+    [mat-dialog-close]="true"
+    cdkFocusInitial
+    (click)="onAddDesarrollador()"
+  >
+    Agregar Desarrollador
+  </button>
+  <button
+    mat-button
+    [mat-dialog-close]="true"
+    cdkFocusInitial
+    (click)="onAddDesarrollador()"
+  >
+    Agregar Tarea
+  </button>
+</mat-dialog-actions>

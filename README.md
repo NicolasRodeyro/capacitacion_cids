@@ -1,1 +1,1 @@
-# capacitacion_cids
+# cids_capacitacion

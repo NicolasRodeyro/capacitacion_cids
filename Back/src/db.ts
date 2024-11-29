@@ -1,0 +1,1 @@
+const connectDatabase = async () => {};

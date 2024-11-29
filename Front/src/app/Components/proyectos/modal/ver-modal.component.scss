@@ -1,0 +1,100 @@
+h2 {
+  color: black;
+  padding: 1rem;
+}
+.mat-proyectos {
+  background-color: white;
+  color: black;
+  .basicInfo {
+    padding-top: 2rem;
+    display: flex;
+    gap: 2rem;
+    justify-content: space-evenly;
+
+    .info {
+      display: grid;
+    }
+  }
+  .lists {
+    padding-top: 2rem;
+    display: flex;
+    gap: 30%;
+
+    p {
+      font-size: medium;
+    }
+
+    li {
+      padding: 1.5px;
+      font-size: medium;
+      .icon {
+        transform: translate(50%, 50%);
+        font-size: small;
+      }
+      .removeDev {
+        cursor: pointer;
+      }
+    }
+
+    .tareas {
+      .treeTareas {
+        background-color: white;
+        --mat-tree-node-text-color: black;
+
+        .childTareas {
+          padding-left: 2rem;
+        }
+      }
+    }
+  }
+}
+.mat-dialog-container {
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.formContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  background-color: rgb(255, 252, 252);
+  color: black;
+  h2 {
+    font-size: large;
+  }
+  form {
+    width: 100%;
+  }
+
+  .mat-form-field {
+    width: 100%;
+  }
+  .form-field {
+    padding-left: 2rem;
+    background-color: transparent;
+    --mdc-filled-text-field-container-color: rgb(255, 252, 252);
+    --mdc-filled-text-field-label-text-color: black;
+    border: none;
+    .mat-mdc-select-arrow {
+      color: black;
+    }
+    .customField {
+      .matLabel {
+        color: black;
+      }
+      --mat-select-enabled-trigger-text-color: black;
+      --mat-app-on-surface: black;
+    }
+  }
+  .addDesarrolador {
+    flex: 1;
+    max-width: 50%;
+    box-sizing: border-box;
+  }
+  .addTarea {
+    flex: 1;
+    max-width: 50%;
+    box-sizing: border-box;
+  }
+}

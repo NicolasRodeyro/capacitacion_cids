@@ -1,0 +1,28 @@
+.sidenavContainer {
+  width: auto;
+  height: 200px;
+  margin: 0;
+  border: 1px;
+  background-color: white;
+  color: black;
+  height: 80vh;
+  .sidenavDrawer {
+    padding: 20px;
+    background-color: #f3f3f3;
+    height: 100%;
+
+    .sidenavItem {
+      color: rgb(70, 67, 67);
+      font-size: xx-large;
+      font-weight: 500;
+      a {
+        text-transform: capitalize;
+      }
+      .sidenavItemDivider {
+        border-top: 2px solid #be95b6;
+        padding-bottom: 25px;
+        margin-top: 10px;
+      }
+    }
+  }
+}

@@ -1,0 +1,27 @@
+.sidenavContainer {
+  width: auto;
+  height: 200px;
+  margin: 0;
+  border: 1px;
+  background-color: white;
+  color: black;
+  height: 80vh;
+}
+.sidenavContainer .sidenavDrawer {
+  padding: 20px;
+  background-color: #f3f3f3;
+  height: 100%;
+}
+.sidenavContainer .sidenavDrawer .sidenavItem {
+  color: rgb(70, 67, 67);
+  font-size: xx-large;
+  font-weight: 500;
+}
+.sidenavContainer .sidenavDrawer .sidenavItem a {
+  text-transform: capitalize;
+}
+.sidenavContainer .sidenavDrawer .sidenavItem .sidenavItemDivider {
+  border-top: 2px solid #be95b6;
+  padding-bottom: 25px;
+  margin-top: 10px;
+}/*# sourceMappingURL=sidenav.component.css.map */

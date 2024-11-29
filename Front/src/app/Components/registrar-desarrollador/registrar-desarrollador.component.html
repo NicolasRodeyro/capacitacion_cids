@@ -1,0 +1,106 @@
+<div class="registrarDevContainer">
+  <div class="registrarDevHeader">
+    <h2>Registrar desarrollador</h2>
+  </div>
+  <div class="registrarDevContent">
+    <form [formGroup]="registrarDevForm" (ngSubmit)="onSubmit()">
+      <div class="formField">
+        <input
+          type="text"
+          formControlName="nombre"
+          class="inputRegistro"
+          placeholder="Nombre*"
+        />
+        <div>
+          @if (registrarDevForm.get('nombre')?.invalid &&
+          registrarDevForm.get('nombre')?.touched){ @if (
+          registrarDevForm.get('nombre')?.errors?.['required']){
+          <mat-error class="validatorError">Ingrese el nombre.</mat-error>
+          } @if (registrarDevForm.get('nombre')?.errors?.['minlength']){
+          <mat-error class="validatorError"
+            >El nombre debe tener mas de 3 caracteres.</mat-error
+          >
+          } }
+        </div>
+      </div>
+
+      <div class="formField">
+        <input
+          type="email"
+          formControlName="correo"
+          placeholder="Correo electrónico*"
+          class="inputRegistro"
+        />
+        <div>
+          @if (registrarDevForm.get('correo')?.invalid &&
+          registrarDevForm.get('correo')?.touched){ @if (
+          registrarDevForm.get('correo')?.errors?.['required']){
+          <mat-error class="validatorError">Ingrese el email.</mat-error>
+          } @if (registrarDevForm.get('correo')?.errors?.['email']){
+          <mat-error class="validatorError">Ingrese un email válido.</mat-error>
+          } }
+        </div>
+      </div>
+
+      <div class="formField">
+        <mat-form-field class="customField" appearance="outline">
+          <mat-label class="matLabel">Rol</mat-label>
+          <mat-select formControlName="rol" class="matSelect">
+            @if (!(roles$ | async)){
+            <mat-option disabled> Loading... </mat-option>
+            } @else { @for (rol of (roles$ | async); track rol.id) {
+            <mat-option class="matDropdownOption" [value]="rol.id">{{
+              rol.nombre
+            }}</mat-option>
+            } }
+          </mat-select>
+        </mat-form-field>
+        <div>
+          @if (registrarDevForm.get('rol')?.invalid &&
+          registrarDevForm.get('rol')?.touched){ @if (
+          registrarDevForm.get('rol')?.errors?.['required']){
+          <mat-error class="validatorError">Ingrese el rol.</mat-error>
+          }}
+        </div>
+      </div>
+
+      <div class="formField">
+        <mat-form-field class="customField" appearance="outline">
+          <input
+            matInput
+            [matDatepicker]="picker"
+            formControlName="fechaContratacion"
+            placeholder="Fecha de contratación*"
+          />
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <div>
+          @if (registrarDevForm.get('fechaContratacion')?.invalid &&
+          registrarDevForm.get('fechaContratacion')?.touched){ @if (
+          registrarDevForm.get('fechaContratacion')?.errors?.['required']){
+          <mat-error class="validatorError"
+            >Ingrese una fecha válida.</mat-error
+          >
+          }}
+        </div>
+      </div>
+      <div class="buttonsContainer">
+        <button mat-button class="limpiarForm" (click)="clearForm()">
+          Limpiar
+        </button>
+        <button
+          mat-raised-button
+          type="submit"
+          class="submitForm"
+          [ngClass]="{ botonDesactivado: !registrarDevForm.valid }"
+        >
+          Registrar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

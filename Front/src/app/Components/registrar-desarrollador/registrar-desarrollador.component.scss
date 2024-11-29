@@ -1,0 +1,88 @@
+.registrarDevContainer {
+  padding: 40px;
+
+  .registrarDevHeader {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .registrarDevContent {
+    display: block;
+    background-color: rgb(247, 247, 247);
+    padding: 50px;
+    border-radius: 2.5px;
+    form {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2);
+      column-gap: 2rem;
+      row-gap: 2.5rem;
+      .formField {
+        .validatorError {
+          color: red;
+        }
+        .inputRegistro {
+          width: 100%;
+          color: black;
+          background-color: transparent;
+          border: 1.5px solid #8b8a8a;
+          border-radius: 0.25rem;
+          padding: 15px;
+        }
+        .customField {
+          background-color: transparent;
+          width: 100%;
+          input {
+            color: black;
+          }
+          .matLabel {
+            color: black;
+          }
+          .matSelect {
+            color: black;
+          }
+          .matDropdownOption {
+            color: black;
+          }
+
+          ::ng-deep .mat-datepicker-toggle .mdc-icon-button {
+            color: black;
+          }
+          ::ng-deep .mat-mdc-select-arrow-wrapper .mat-mdc-select-arrow {
+            color: black;
+          }
+          ::ng-deep
+            .mat-mdc-floating-label
+            .mat-mdc-form-field
+            .mat-mdc-form-field-required-marker {
+            color: black;
+          }
+        }
+        ::placeholder {
+          color: black;
+          opacity: 0.7;
+        }
+
+        ::-ms-input-placeholder {
+          color: black;
+        }
+      }
+      .buttonsContainer {
+        grid-column: 3;
+        grid-row: 3;
+        justify-self: end;
+        .limpiarForm {
+          color: rgb(81, 121, 206);
+        }
+        .submitForm {
+          background-color: rgb(81, 121, 206);
+          color: white;
+        }
+        .botonDesactivado {
+          opacity: 0.6;
+          cursor: not-allowed;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+<mat-sidenav-container>
+  <mat-sidenav mode="over" autoFocus="false" [(opened)]="opened">
+    <app-sidenav />
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <div class="layout-container">
+      <app-header (toggleSidenav)="onToggleSidenav()" />
+
+      <div class="content">
+        <router-outlet />
+      </div>
+
+      <app-footer />
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
